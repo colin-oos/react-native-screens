@@ -165,7 +165,8 @@
         } else {
           largeAttrs[NSFontAttributeName] = [UIFont boldSystemFontOfSize:largeSize];
         }
-        [navbar setLargeTitleTextAttributes:largeAttrs];
+        // oos - comment out for tvOS support
+        //[navbar setLargeTitleTextAttributes:largeAttrs];
       }
     }
   }
@@ -236,7 +237,8 @@
             // in order for new back button image to be loaded we need to trigger another change
             // in back button props that'd make UIKit redraw the button. Otherwise the changes are
             // not reflected. Here we change back button visibility which is then immediately restored
-            vc.navigationItem.hidesBackButton = YES;
+            // oos - comment out for tvOS support
+            //vc.navigationItem.hidesBackButton = YES;
             [config updateViewControllerIfNeeded];
           }];
         }
@@ -286,11 +288,12 @@
 
   navitem.title = config.title;
   if (config.backTitle != nil) {
-    prevItem.backBarButtonItem = [[UIBarButtonItem alloc]
+    // oos - comment out for tvOS support
+    /*prevItem.backBarButtonItem = [[UIBarButtonItem alloc]
                                   initWithTitle:config.backTitle
                                   style:UIBarButtonItemStylePlain
                                   target:nil
-                                  action:nil];
+                                  action:nil];*/
     if (config.backTitleFontFamily || config.backTitleFontSize) {
       NSMutableDictionary *attrs = [NSMutableDictionary new];
       CGFloat size = config.backTitleFontSize ? [config.backTitleFontSize floatValue] : 17;
@@ -299,17 +302,21 @@
       } else {
         attrs[NSFontAttributeName] = [UIFont boldSystemFontOfSize:size];
       }
-      [self setTitleAttibutes:attrs forButton:prevItem.backBarButtonItem];
+      // oos - comment out for tvOS support
+      //[self setTitleAttibutes:attrs forButton:prevItem.backBarButtonItem];
     }
-  } else {
-    prevItem.backBarButtonItem = nil;
   }
+  // oos - comment out for tvOS support
+  /*else {
+    prevItem.backBarButtonItem = nil;
+  }*/
 
   if (@available(iOS 11.0, *)) {
-    if (config.largeTitle) {
+    // oos - comment out for tvOS support
+    /*if (config.largeTitle) {
       navctr.navigationBar.prefersLargeTitles = YES;
     }
-    navitem.largeTitleDisplayMode = config.largeTitle ? UINavigationItemLargeTitleDisplayModeAlways : UINavigationItemLargeTitleDisplayModeNever;
+    navitem.largeTitleDisplayMode = config.largeTitle ? UINavigationItemLargeTitleDisplayModeAlways : UINavigationItemLargeTitleDisplayModeNever;*/
   }
 #ifdef __IPHONE_13_0
   if (@available(iOS 13.0, *)) {
@@ -388,16 +395,18 @@
   {
     // updating backIndicatotImage does not work when called during transition. On iOS pre 13 we need
     // to update it before the navigation starts.
-    UIImage *backButtonImage = [self loadBackButtonImageInViewController:vc withConfig:config];
+    // oos - comment out for tvOS support
+    /*UIImage *backButtonImage = [self loadBackButtonImageInViewController:vc withConfig:config];
     if (backButtonImage) {
       navctr.navigationBar.backIndicatorImage = backButtonImage;
       navctr.navigationBar.backIndicatorTransitionMaskImage = backButtonImage;
     } else if (navctr.navigationBar.backIndicatorImage) {
       navctr.navigationBar.backIndicatorImage = nil;
       navctr.navigationBar.backIndicatorTransitionMaskImage = nil;
-    }
+    }*/
   }
-  navitem.hidesBackButton = config.hideBackButton;
+  // oos - comment out for tvOS support
+  //navitem.hidesBackButton = config.hideBackButton;
   navitem.leftBarButtonItem = nil;
   navitem.rightBarButtonItem = nil;
   navitem.titleView = nil;
