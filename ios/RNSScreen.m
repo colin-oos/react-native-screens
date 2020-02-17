@@ -99,9 +99,10 @@
     case RNSScreenStackAnimationFade:
       _controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
       break;
-    case RNSScreenStackAnimationFlip:
+      //oos - comment out for tvOS support
+    /*case RNSScreenStackAnimationFlip:
       _controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-      break;
+      break;*/
     case RNSScreenStackAnimationNone:
     case RNSScreenStackAnimationDefault:
       // Default
