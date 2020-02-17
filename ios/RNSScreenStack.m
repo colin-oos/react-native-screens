@@ -36,7 +36,8 @@
     _controller.delegate = self;
     _needUpdate = NO;
     [self addSubview:_controller.view];
-    _controller.interactivePopGestureRecognizer.delegate = self;
+    // oos - comment out for tvOS support
+    //_controller.interactivePopGestureRecognizer.delegate = self;
 
     // we have to initialize viewControllers with a non empty array for
     // largeTitle header to render in the opened state. If it is empty
